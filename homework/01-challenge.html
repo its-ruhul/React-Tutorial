@@ -4,25 +4,58 @@
     <title>Homework</title>
   </head>
   <body>
+
     <div class="js-container"></div>
+    <div class="js-container-2"></div>
+    <div class="js-timer-container"></div>
 
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-        const productCost = 10 + 2 * 8;
-        console.log(productCost);
+      const productCost = 10 + 2 * 8;
+      const shippingCost = 5;
 
-        const div = (
-          <div>
+      const div = (
+        <div>
 
-          </div>
-        );
+          <p>Product Cost: ${productCost}</p>
+          <p>Shipping Cost: ${shippingCost}</p>
+          <p>Total Cost: ${productCost + shippingCost}</p>
+
+          <button>Place your order</button>
+
+        </div>
+      );
+
+      const today = dayjs().format('MMMM D');
+      console.log(today);
+
+      const datePara = (
+
+        <p>Today is {today}</p>
+      );
+
+      setInterval(() => {
+
+        const now = dayjs().format('HH:mm:ss');
+        const timeNow = (
+          <div>Current time: {now}</div>
+        )
+        const timer = document.querySelector('.js-timer-container');
+        ReactDOM.createRoot(timer).render(timeNow);
+
+      }, 1000);
 
       const container = document.querySelector('.js-container');
       ReactDOM.createRoot(container).render(div);
+
+      const container1 = document.querySelector('.js-container-2');
+      ReactDOM.createRoot(container1).render(datePara);
     </script>
   </body>
 </html>
