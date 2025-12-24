@@ -24,7 +24,8 @@
         );
       }
 
-      function ChatMessage() {
+      function ChatMessage(props) {
+        console.log(props);
         return (
           <div>
             hello chatbot
@@ -34,12 +35,12 @@
       }
       
 
-        const app = (
-          <>
-            <ChatInput />
-            <ChatMessage />
-          </>
-        );
+      const app = (
+        <>
+          <ChatInput />
+          <ChatMessage message="Hello chatbot" />
+        </>
+      );
 
       const container = document.querySelector('.js-container');
       ReactDOM.createRoot(container).render(app);
