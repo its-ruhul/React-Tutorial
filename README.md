@@ -20,6 +20,8 @@ Z = 0
 4. Set mines to -1 and set blanks to 0
 
 5. Render the matrix and graphics
+
+
 Z = 1
 
 Z = 2
