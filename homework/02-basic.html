@@ -65,9 +65,11 @@
                 <p>Price: ${price}</p>
             );
 
+            //ERROR: the source rendered is: ./{imageSrc}
             return (
                 <div>
-                    <img src="{imageSrc}" />
+                    <img src={imageSrc} width="100" height="100" />
+                    {console.log(imageSrc)}
                     <p>{product}</p>
                     {displayPrice}
                     <button>Add to Cart</button>
@@ -79,7 +81,7 @@
             return (
                 <>
                     <LoginForm />
-                    
+
                     <ProductDetails
                         imageSrc="images/cotton-socks.png"
                         product="Cotton socks" 
