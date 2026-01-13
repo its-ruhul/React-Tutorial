@@ -24,26 +24,26 @@
             );
         }
         
-        function TextBox(formType) {
+        function TextBox({formType}) {
 
             return (
                 <div>
                     {formType === 'email' && 
-                        <input placeholder="Email" size="30"/>
+                        <input placeholder="Email" size="20"/>
                     }
+
                     {formType === 'password' && 
-                        <input placeholder="Passowrd" type="password" size="30"/>
+                        <input placeholder="Passowrd" type="password" size="20"/>
                     }
                 </div>
             );
         }
-
         
         function LoginForm() {
 
             return (
                 <>
-                    <p>Hello, welcome to my website</p>
+                    <p>Hello, welcome to my website</p> 
                     <TextBox formType='email' />
                     <TextBox formType='password' />
                     <LoginButton /> <SignUpButton />
@@ -51,10 +51,53 @@
             );
         }
 
+        function ProductDetails({imageSrc, product, priceCents, discountCents}) {
+
+            const price = Math.round(priceCents/100).toFixed(2);
+            const discount = discountCents && Math.round(discountCents/100).toFixed(2);
+
+            const displayPrice = discountCents ? (
+                <>
+                    <del><p>Price: ${price}</p></del>
+                    <p>Discount price: ${discount}</p>
+                </>
+            ) : (
+                <p>Price: ${price}</p>
+            );
+
+            return (
+                <div>
+                    <img src="{imageSrc}" />
+                    <p>{product}</p>
+                    {displayPrice}
+                    <button>Add to Cart</button>
+                </div>
+            );
+        }
+
         function App() {
             return (
                 <>
                     <LoginForm />
+                    
+                    <ProductDetails
+                        imageSrc="images/cotton-socks.png"
+                        product="Cotton socks" 
+                        priceCents="1090" 
+                        discountCents="900"
+                    />
+                    <ProductDetails
+                        imageSrc="images/tennis-balls.png" 
+                        product="Tennis balls" 
+                        priceCents="600" 
+                        discountCents="540" 
+                    />
+                    <ProductDetails
+                        imageSrc="images/plain-t-shirt.png" 
+                        product="Plain T-Shirt" 
+                        priceCents="799" 
+                        discountCents="699" 
+                    />
                 </>
             );
         }
