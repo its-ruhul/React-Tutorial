@@ -50,14 +50,59 @@
         );
       }
 
+      function ChatMessages() {
+
+        const chatMessages = [{
+          message: 'Hello chatbot',
+          sender: 'user',
+          id: 'id1'
+        }, {
+          message: 'Hello! How can I help you?',
+          sender: 'robot',
+          id: 'id2'
+        }, {
+          message: 'Can you get me todays date?',
+          sender: 'user',
+          id: 'id3'
+        }, {
+          message: 'Today is September 27',
+          sender: 'robot',
+          id: 'id4'
+        }];
+
+        function sendMessage() {
+          chatMessages.push({
+            message: 'test',
+            sender: 'user',
+            id: crypto.randomUUID()
+          });
+
+          console.log(chatMessages);
+        }
+
+        return (
+          <>
+            <button onClick={sendMessage}>Send message</button>
+
+            {chatMessages.map((chatMessage) => {
+              return (
+                <ChatMessage 
+                  message={chatMessage.message}
+                  sender={chatMessage.sender}
+                  key={chatMessage.id}            //a unique key is encouraged in React to rendering using arrays
+                />
+              );
+            })}
+          </>
+        )
+      }
+
       function App() {
+
         return (
           <>
             <ChatInput />
-            <ChatMessage message="Hello chatbot" sender="user" />
-            <ChatMessage message="Hello! How can I help you?" sender="robot" />
-            <ChatMessage message="Can you get me todays date?" sender="user" />
-            <ChatMessage message="Today is September 27" sender="robot" />
+            <ChatMessages />
           </>
         );
       }
