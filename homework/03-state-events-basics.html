@@ -37,23 +37,43 @@
         );
       }
 
-      function TextInput({count, setCount}) {
+      function TextInput({text, setText}) {
+
+        function saveInputText() {
+          setText(event.target.value);
+        }
 
         return (
           <input 
             placeholder="Type a name here"
             size="30"
             onChange={saveInputText}
+            value={text}
           />  
         );
       }
 
-      function ResetTextButton({count, setCount}) {
+      function ResetTextButton({setText}) {
+
+        function resetText() {
+          setText('');
+        }
+
+        return(
+          <button onClick={resetText}>Reset</button>
+        );
 
       }
 
-      function ExampleTextButton({count, setCount}) {
+      function ExampleTextButton({text, setText}) {
 
+        function resetText() {
+          setText('Ruhul');
+        }
+
+        return(
+          <button onClick={resetText}>Example</button>
+        );
       }
 
       function App() {
@@ -78,8 +98,8 @@
             <br />
 
             <TextInput text={text} setText={setText}/>
-            <ResetTextButton  text={text} setText={setText}/>
-            <ExampleTextButton text={text} setText={setText}/>
+            <ResetTextButton setText={setText}/>
+            <ExampleTextButton setText={setText}/>
             <p>Hello {text}</p>
           </>
         );
