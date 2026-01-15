@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>State and Event Handlers</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="../react-scripts/react.js"></script>
+    <script src="../react-scripts/react-dom.js"></script>
+
+    <script src="../react-scripts/babel.js"></script>
+    <script type="text/babel">
+
+      function CounterButton({count, setCount}) {
+
+        function updateCount() {
+          setCount(count + 1);
+        }
+        
+        return(
+          <button onClick={updateCount}>
+            Clicked {count} time
+            {count !== 1 && 's'}
+          </button>
+        );
+      }
+
+      function ResetButton({setCount}) {
+
+        function resetCount(){
+          setCount(0);
+        }
+
+        return(
+          <button onClick={resetCount}>Reset</button>
+        );
+      }
+
+      function TextInput({count, setCount}) {
+
+        return (
+          <input 
+            placeholder="Type a name here"
+            size="30"
+            onChange={saveInputText}
+          />  
+        );
+      }
+
+      function ResetTextButton({count, setCount}) {
+
+      }
+
+      function ExampleTextButton({count, setCount}) {
+
+      }
+
+      function App() {
+
+        const [count, setCount] = React.useState(0);
+        const [text, setText] = React.useState('');
+
+        return(
+          <>
+            <CounterButton 
+              count={count}
+              setCount={setCount}
+            />
+
+            <CounterButton 
+              count={count}
+              setCount={setCount}
+            />
+
+            <ResetButton setCount={setCount} />
+
+            <br />
+
+            <TextInput text={text} setText={setText}/>
+            <ResetTextButton  text={text} setText={setText}/>
+            <ExampleTextButton text={text} setText={setText}/>
+            <p>Hello {text}</p>
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
