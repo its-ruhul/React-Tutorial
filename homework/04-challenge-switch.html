@@ -14,7 +14,7 @@
 
       function CounterButton({count, setCount}) {
 
-        const button = React.useRef()
+        const counterButton = React.useRef(null);
 
         function updateCount() {
           setCount(count + 1);
@@ -25,12 +25,16 @@
         }
 
         function autoClick() {
+          setInterval(() => {
+            const buttonElem = counterButton.current;
+            buttonElem.click();
+          }, 1000)
 
         }
         
         return(
           <>
-            <button onClick={updateCount}>
+            <button onClick={updateCount} ref={counterButton}>
               Clicked {count} time
               {count !== 1 && 's'}
             </button>
@@ -46,11 +50,6 @@
         );
       }
 
-      function ResetButton({setCount}) {
-
-        
-      }
-
       function App() {
 
         const [count, setCount] = React.useState(0);
@@ -61,8 +60,6 @@
               count={count}
               setCount={setCount}
             />
-
-            <ResetButton setCount={setCount} />
           </>
         );
       }
