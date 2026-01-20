@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>State and Event Handlers</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="../react-scripts/react.js"></script>
+    <script src="../react-scripts/react-dom.js"></script>
+
+    <script src="../react-scripts/babel.js"></script>
+    <script type="text/babel">
+
+      function CounterButton({count, setCount}) {
+
+        const button = React.useRef()
+
+        function updateCount() {
+          setCount(count + 1);
+        }
+
+        function resetCount(){
+          setCount(0);
+        }
+
+        function autoClick() {
+
+        }
+        
+        return(
+          <>
+            <button onClick={updateCount}>
+              Clicked {count} time
+              {count !== 1 && 's'}
+            </button>
+
+            <button onClick={resetCount}>
+              Reset
+            </button>
+            
+            <button onClick={autoClick}>
+              Auto Click
+            </button>
+          </>
+        );
+      }
+
+      function ResetButton({setCount}) {
+
+        
+      }
+
+      function App() {
+
+        const [count, setCount] = React.useState(0);
+
+        return(
+          <>
+            <CounterButton 
+              count={count}
+              setCount={setCount}
+            />
+
+            <ResetButton setCount={setCount} />
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

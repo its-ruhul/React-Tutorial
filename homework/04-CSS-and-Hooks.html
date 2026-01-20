@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homework</title>
+
+    <style>
+
+      .button-on-state,
+      .button-off-state {
+        padding: 8px 12px;
+        font-size: 16px;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .button-on-state {
+        background-color: rgb(24, 135, 84);
+      }
+
+      .button-off-state {
+        background-color: rgb(220, 53, 69);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="../react-scripts/react.js"></script>
+    <script src="../react-scripts/react-dom.js"></script>
+
+    <script src="../react-scripts/dayjs.js"></script>
+
+    <script src="../react-scripts/babel.js"></script>
+    <script type="text/babel">
+
+      function Switch() {
+
+        const [isButtonOn, setIsButtonOn] = React.useState(true);
+
+        function switchButton() {
+          isButtonOn && setIsButtonOn(false);
+          !isButtonOn && setIsButtonOn(true);
+        }
+
+        return (
+
+          <>
+            {isButtonOn && 
+              <button onClick={switchButton} className="button-on-state">ON</button>
+            }
+
+            {!isButtonOn &&
+              <button onClick={switchButton} className="button-off-state">OFF</button>
+            }
+          </>
+        );
+      }
+
+      function Clock() {
+
+        const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'));
+
+        //TODO: Check what exercise 4g meant
+
+        React.useEffect(() => {
+          setInterval(() => {
+            setTime(dayjs().format('HH:mm:ss'));
+            console.log('run code');
+          }, 1000);
+        });
+        
+        return (
+          <p>
+            Current Time: {time}
+          </p>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <Switch />
+            <Clock />
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

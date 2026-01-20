@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Challenge Exercise</title>
+
+    <style>
+
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        font-weight: 500;
+      }
+
+      .login-button,
+      .sign-up-button,
+      .show-password-button {
+        background-color: rgb(0, 123, 255);
+        padding: 8px 12px;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      .show-password-button{
+        margin-left: 10px;
+      }
+
+      .email-textbox,
+      .password-textbox {
+        padding: 8px 20px;
+        margin-bottom: 10px;
+        width: 200px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="../react-scripts/react.js"></script>
+    <script src="../react-scripts/react-dom.js"></script>
+
+    <script src="../react-scripts/babel.js"></script>
+    <script type="text/babel">
+
+      function LoginButton() {
+          return (
+              <button className="login-button">Login</button>
+          );
+      }
+      
+      function SignUpButton() {
+          return (
+              <button className="sign-up-button">Sign Up</button>
+          );
+      }
+      
+      function TextBox({formType}) {
+
+        const [showPassword, setShowPassword] = React.useState(false);
+
+        function toggleShowPassword() {
+
+          if (showPassword) {
+            setShowPassword(false);
+          }
+          else {
+            setShowPassword(true);
+          }
+        }
+
+        return (
+            <div>
+                {formType === 'email' && 
+                  <input placeholder="Email" className="email-textbox"/>
+                }
+
+                {formType === 'password' && 
+                  <>
+                    <input
+                      placeholder="Password"
+                      className="password-textbox"
+                      type= {showPassword ? 'text' : 'password'}
+                    />
+                    <button
+                      onClick={toggleShowPassword}
+                      className="show-password-button"
+                    >
+                      {showPassword ? 'hide' : 'show'}
+                    </button>
+                  </>
+                }
+              </div>
+            );
+      }
+      
+      function LoginForm() {
+
+          return (
+              <>
+                  <h2>Hello, welcome to my website</h2> 
+                  <TextBox formType='email' />
+                  <TextBox formType='password' />
+                  <LoginButton /> <SignUpButton />
+              </>
+          );
+      }
+
+      function App() {
+          return (
+              <>
+                  <LoginForm />
+              </>
+          );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
