@@ -1,0 +1,7 @@
+.email-textbox,
+.password-textbox {
+  padding: 8px 20px;
+  margin-bottom: 10px;
+  width: 200px;
+  margin-right: 10px;
+}
