@@ -8,5 +8,6 @@ DAY 07: 02:41:00 to 02:42:20 <br>
 DAY 08: 02:42:00 to 03:35:00 <br>
 DAY 09: 03:35:00 to 03:47:57 <br>
 DAY 10: 03:47:57 to 04:15:00 <br>
+DAY 11: 04:15:00 to 04:58:45 <br>
 
 RUN THIS TO START THE SERVER: npm run dev
