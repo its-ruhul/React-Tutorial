@@ -11,7 +11,7 @@
 
 .chat-message-text {
   background-color: rgb(238, 238, 238);
-  padding: 15px 20px;
+  padding: 15px 20px 10px 20px;
   border-radius: 10px;
   margin-right: 10px;
   margin-left: 10px;
@@ -28,4 +28,10 @@
   height: 45px;
   border-radius: 45px;
   object-fit: cover;
+}
+
+.time-stamp {
+  font-size: 13px;
+  color: darkgray;
+  margin-top: 5px;
 }
