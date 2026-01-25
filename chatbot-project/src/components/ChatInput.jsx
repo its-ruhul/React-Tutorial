@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Chatbot} from 'supersimpledev'
 import loadingGIF from '../assets/loading-spinner.gif'
+import dayjs from 'dayjs'
 import './ChatInput.css';
 
 //Components in React should be in PascalCase and camelCase
@@ -20,11 +21,14 @@ export function ChatInput({chatMessages, setChatMessages}) {
       setInputText('');
       setIsLoading(true);
 
+      const time = dayjs().valueOf();
+
       const newChatMessages = [
         ...chatMessages,
         {
           message: inputText,
           sender: 'user',
+          timeStamp: dayjs(time).format('HH:mm'),
           id: crypto.randomUUID()
         }                   
       ];
@@ -43,9 +47,12 @@ export function ChatInput({chatMessages, setChatMessages}) {
       {
         message: response,
         sender: 'robot',
+        timeStamp: dayjs(time).format('HH:mm'),
         id: crypto.randomUUID()
       }                   
     ]);
+
+    //localStorage.setItem('messages', JSON.stringify(chatMessages));
 
     setIsLoading(false);
     }

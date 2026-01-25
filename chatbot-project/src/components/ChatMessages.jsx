@@ -1,6 +1,5 @@
 import {useAutoScroll} from "./useAutoScroll"
 import {ChatMessage} from './ChatMessage'
-import dayjs from 'dayjs'
 import './ChatMessages.css'
 
 function ChatMessages({chatMessages}) {
@@ -18,7 +17,7 @@ function ChatMessages({chatMessages}) {
   }, [chatMessages]);
   */
 
-  const time = dayjs().valueOf();
+  
 
   return (
     <div className="chat-messages-container" ref={chatMessagesRef}>
@@ -27,7 +26,7 @@ function ChatMessages({chatMessages}) {
           <ChatMessage 
             message={chatMessage.message}
             sender={chatMessage.sender}
-            timeStamp = {dayjs(time).format('HH:mm')}
+            timeStamp={chatMessage.timeStamp}
             key={chatMessage.id}            //a unique key is encouraged in React to render using arrays
           />
         );
