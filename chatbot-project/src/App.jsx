@@ -7,13 +7,17 @@ import './App.css'
 
 function App() {
 
-  const [chatMessages, setChatMessages] = useState([]);
+  const [chatMessages, setChatMessages] = useState(
+    JSON.parse(localStorage.getItem('messages')) || []
+  );
 
   useEffect(() => {
     Chatbot.addResponses({
       'who create': 'Ruhul created me with the help of React Tutorial by SuperSimpleDev',
       'most beautiful': 'Priyanshi is the most beautiful girl in the world'
     });
+
+    localStorage.setItem('messages', JSON.stringify(chatMessages));
   }, [chatMessages]);
   
   //const [chatMessages, setChatMessages] = array;

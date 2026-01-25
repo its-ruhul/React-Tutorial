@@ -52,8 +52,6 @@ export function ChatInput({chatMessages, setChatMessages}) {
       }                   
     ]);
 
-    //localStorage.setItem('messages', JSON.stringify(chatMessages));
-
     setIsLoading(false);
     }
   }
@@ -66,6 +64,10 @@ export function ChatInput({chatMessages, setChatMessages}) {
     if (event.key === 'Escape'){
       setInputText('');
     }
+  }
+
+  function clearMessage() {
+    setChatMessages([]);
   }
 
   return (
@@ -84,6 +86,11 @@ export function ChatInput({chatMessages, setChatMessages}) {
         onClick={sendMessage}
         className="send-button"
       >Send</button>
+
+      <button
+        onClick={clearMessage}
+        className="clear-button"
+      >Clear</button>
     </div>
   );
 }
