@@ -13,6 +13,6 @@ DAY 12: 04:58:45 to 05:17:00 <br>
 DAY 13: 05:17:00 to 06:09:15 <br>
 DAY 14: 06:09:15 to 06:10:15 <br>
 DAY 15: 06:10:15 to 07:07:46 <br>
-DAY 16: 07:07:16 to 07:15:25 <br>
+DAY 16: 07:07:16 to 07:37:39 <br>
 
 RUN THIS TO START THE SERVER: npm run dev
