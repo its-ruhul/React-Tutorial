@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useState, useEffect, Fragment } from 'react';
 import dayjs from 'dayjs';
-import { Header } from '../components/Header';
-import buyAgain from '../assets/images/icons/buy-again.png';
-import { formatMoney } from '../utils/money'
+import { Header } from '../../components/Header';
+import buyAgain from '../../assets/images/icons/buy-again.png';
+import { formatMoney } from '../../utils/money'
 import './OrdersPage.css';
 
 export function OrdersPage({ cart }) {
