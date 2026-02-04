@@ -28,9 +28,9 @@ export function OrdersDetailGrid({order, buyAgain}) {
             </div>
 
             <div className="product-actions">
-              <a href="/tracking">
+              <a href={`tracking/${order.id}/${orderProduct.productId}`}>
                 <button className="track-package-button button-secondary">
-                  Track package {`tracking/${order.id}/${orderProduct.productId}`}
+                  Track package 
                 </button>
               </a>
             </div>

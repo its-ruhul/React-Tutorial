@@ -7,7 +7,7 @@ import './CheckoutHeader.css';
 export function CheckoutHeader({cart}) {
 
   let totalQuantity = 0;
-  let s = ''
+  let s = '';
 
   cart.forEach((cartItem) => {
     totalQuantity +=  cartItem.quantity;

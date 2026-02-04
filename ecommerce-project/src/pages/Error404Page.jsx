@@ -1,10 +1,10 @@
 import { Header } from "../components/Header";
 import './Error404Page.css';
 
-export function Error404Page() {
+export function Error404Page({cart}) {
   return (
     <>
-      <Header />
+      <Header cart={cart}/>
 
       <div className="error-404-page">
         <div className="title">
