@@ -1,7 +1,7 @@
 import { OrderHeader } from "./OrderHeader";
 import { OrdersDetailGrid } from "./OrdersDetailGrid";
 
-export function OrdersGrid({orders, buyAgain}) {
+export function OrdersGrid({orders, buyAgain, loadCart}) {
   return (
     <div className="orders-grid">
 
@@ -11,7 +11,12 @@ export function OrdersGrid({orders, buyAgain}) {
 
             <OrderHeader order={order} />
 
-            <OrdersDetailGrid order={order} buyAgain={buyAgain} />
+            <OrdersDetailGrid 
+              order={order} 
+              buyAgain={buyAgain} 
+              loadCart={loadCart} 
+            />
+            
           </div>
         );
       })}
