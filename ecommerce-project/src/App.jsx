@@ -9,6 +9,8 @@ import './App.css';
 import { Error404Page } from './pages/Error404Page';
 
 function App() {
+
+  window.axios = axios;
   const [cart, setCart] = useState([]);
 
   const loadCart = async () => {
