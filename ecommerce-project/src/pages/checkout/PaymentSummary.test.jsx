@@ -1,11 +1,21 @@
 import { it, expect, describe, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, useLocation } from 'react-router';
 import { PaymentSummary } from './PaymentSummary';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 
 vi.mock('axios');
+
+function Location() {
+  const location = useLocation();
+
+  return (
+    <div data-testid="url-path">
+      {location.pathname}
+    </div>
+  );
+}
 
 describe('Payment Summary componenet', () => {
   let user;
@@ -33,8 +43,11 @@ describe('Payment Summary componenet', () => {
     render(
       <MemoryRouter>
         <PaymentSummary paymentSummary={paymentSummary} loadCart={loadCart} />
+        <Location />
       </MemoryRouter>
     );
+
+    user = userEvent.setup();
   });
 
   it('checks if all payments are rendered correctly', () => {
@@ -59,5 +72,14 @@ describe('Payment Summary componenet', () => {
       screen.getByTestId('total-cost')
     ).toHaveTextContent('$138.20')
     
-  })
-})
+  });
+
+  it('it checks if place order button works correctly', async () => {
+    
+    const placeOrderButton = screen.getByTestId('place-order-button');
+    await user.click(placeOrderButton);
+
+    expect(axios.post).toHaveBeenCalledWith('/api/orders');
+    expect(screen.getByTestId('url-path')).toHaveTextContent('/orders');
+  });
+});
