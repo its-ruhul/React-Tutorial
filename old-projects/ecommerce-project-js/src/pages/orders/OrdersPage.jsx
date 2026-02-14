@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect, Fragment } from 'react';
-import { Header } from '../../components/Header';
+import { Header } from '../../components/Header.tsx';
 import buyAgain from '../../assets/images/icons/buy-again.png';
 import './OrdersPage.css';
 import { OrdersGrid } from './OrderGrid';

@@ -1,17 +1,22 @@
-import { NavLink, useSearchParams } from 'react-router';
+import { NavLink } from 'react-router';
 import mobileLogoWhite from '../assets/images/mobile-logo-white.png';
 import logoWhite from '../assets/images/logo-white.png';
 import cartIcon from '../assets/images/icons/cart-icon.png';
 import searchIcon from '../assets/images/icons/search-icon.png';
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import './Header.css';
 
-export function Header({cart}) {
+type HeaderProps = {
+  cart: {
+    productId: string;
+    quantity: number;
+    deliveryOptionId: string;
+  }[];
+}
+
+export function Header({cart}: HeaderProps) {
 
   const [searchText, setSearchText] = useState('');
-
-  const [searchParams] = useSearchParams();
-  const search = searchParams.get('search');
 
   let totalQuantity = 0;
 
@@ -19,7 +24,7 @@ export function Header({cart}) {
     totalQuantity += cartItem.quantity;
   });
 
-  function searchInput(event) {
+  function searchInput(event: ChangeEvent<HTMLInputElement>) {
     setSearchText(event.target.value);
   }
 
@@ -27,7 +32,7 @@ export function Header({cart}) {
     console.log(searchText);
   }
 
-  function keyboardFunctions(event) {
+  function keyboardFunctions(event: KeyboardEvent) {
     if (event.key === 'Enter') {
       searchProduct();
     }
@@ -54,14 +59,12 @@ export function Header({cart}) {
           placeholder="Search"
           onChange={searchInput}
           onKeyDown={keyboardFunctions}
-          value={search || searchText}
+          value={searchText}
         />
 
-        <NavLink to={`/?search=${searchText}`}>
-          <button className="search-button">
-            <img className="search-icon" src={searchIcon} />
-          </button>
-        </NavLink>
+        <button className="search-button" onClick={searchProduct}>
+          <img className="search-icon" src={searchIcon} />
+        </button>
       </div>
 
       <div className="right-section">

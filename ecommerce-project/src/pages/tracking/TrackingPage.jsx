@@ -1,4 +1,4 @@
-import { Header } from '../../components/Header';
+import { Header } from '../../components/Header.tsx';
 import { Link, useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import axios from 'axios';

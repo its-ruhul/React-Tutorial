@@ -1,4 +1,4 @@
-import { Header } from "../components/Header";
+import { Header } from "../components/Header.tsx";
 import './Error404Page.css';
 
 export function Error404Page({cart}) {

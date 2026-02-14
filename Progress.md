@@ -18,6 +18,8 @@ DAY 17: 07:37:39 to 08:37:43 <br>
 DAY 18: 08:37:43 to 08:49:26 <br>
 DAY 19: 08:49:26 to 09:49:55 <br>
 DAY 20: 09:49:55 to 10:43:27 <br>
+DAY 21: 10:43:27 to 11:13:40 <br>
+DAY 22: 11:13:40 to  <br>
 
 RUN THIS TO START THE SERVER: npm run dev
 RUN THIS TO START TEST: npx vitest
